@@ -15,7 +15,7 @@ const orderRouter = require('./routes/order')
 const questionRouter = require('./routes/question')
 
 const app = express()
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 80
 
 app.use(bodyParser.json({limit: '100mb', extended: true}))
 app.use(bodyParser.urlencoded({limit: '100mb', extended: true}))
