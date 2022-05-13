@@ -17,6 +17,8 @@ lerna-debug.log*
 .env
 .env.test
 
+*.DS_Store
+
 # yarn v2
 .yarn/cache
 .yarn/unplugged
