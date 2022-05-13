@@ -23,38 +23,44 @@ app.use(bodyParser.urlencoded({limit: '100mb', extended: true}))
 app.use(express.json())
 app.use(cookieParser())
 
-app.use(cors({
-    credentials: true,
-    origin: [process.env.MAIN_CLIENT_URL, process.env.ADMIN_PANEL_CLIENT_URL]
-}));
+app.listen(PORT, () => console.log('Server has been started on PORT ', PORT))
 
-app.use('/api', dashboardRouter)
-app.use('/api', questionRouter)
-app.use('/api', categoryRouter)
-app.use('/api', catalogRouter)
-app.use('/api', productRouter)
-app.use('/api', orderRouter)
-app.use('/api', authRouter)
+app.get('/', (req, res) => {
+    res.send('Hello World')
+});
 
-app.use(errorMiddleware)
+// app.use(cors({
+//     credentials: true,
+//     origin: [process.env.MAIN_CLIENT_URL, process.env.ADMIN_PANEL_CLIENT_URL]
+// }));
 
-const start = async () => {
-    try {
+// app.use('/api', dashboardRouter)
+// app.use('/api', questionRouter)
+// app.use('/api', categoryRouter)
+// app.use('/api', catalogRouter)
+// app.use('/api', productRouter)
+// app.use('/api', orderRouter)
+// app.use('/api', authRouter)
 
-        await mongoose.connect(process.env.DB_URL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useCreateIndex: true,
-            useFindAndModify: false
-        })
+// app.use(errorMiddleware)
 
-        app.listen(PORT, () => console.log('Server has been started on PORT ', PORT))
+// const start = async () => {
+//     try {
 
-    } catch (err) {
-        console.error(err)
-    }
-}
+//         await mongoose.connect(process.env.DB_URL, {
+//             useNewUrlParser: true,
+//             useUnifiedTopology: true,
+//             useCreateIndex: true,
+//             useFindAndModify: false
+//         })
+
+//         app.listen(PORT, () => console.log('Server has been started on PORT ', PORT))
+
+//     } catch (err) {
+//         console.error(err)
+//     }
+// }
 
 
-start()
+// start()
 
