@@ -1,4 +1,3 @@
-require('dotenv').config()
 const cors = require('cors')
 const express = require('express')
 const cookieParser = require('cookie-parser')
@@ -26,41 +25,41 @@ app.use(cookieParser())
 app.listen(PORT, () => console.log('Server has been started on PORT ', PORT))
 
 app.get('/', (req, res) => {
-    res.send('Hello World')
+    res.send('API is working fine')
 });
 
-// app.use(cors({
-//     credentials: true,
-//     origin: [process.env.MAIN_CLIENT_URL, process.env.ADMIN_PANEL_CLIENT_URL]
-// }));
+app.use(cors({
+    credentials: true,
+    origin: [process.env.MAIN_CLIENT_URL, process.env.ADMIN_PANEL_CLIENT_URL]
+}));
 
-// app.use('/api', dashboardRouter)
-// app.use('/api', questionRouter)
-// app.use('/api', categoryRouter)
-// app.use('/api', catalogRouter)
-// app.use('/api', productRouter)
-// app.use('/api', orderRouter)
-// app.use('/api', authRouter)
+app.use('/api', dashboardRouter)
+app.use('/api', questionRouter)
+app.use('/api', categoryRouter)
+app.use('/api', catalogRouter)
+app.use('/api', productRouter)
+app.use('/api', orderRouter)
+app.use('/api', authRouter)
 
-// app.use(errorMiddleware)
+app.use(errorMiddleware)
 
-// const start = async () => {
-//     try {
+const start = async () => {
+    try {
 
-//         await mongoose.connect(process.env.DB_URL, {
-//             useNewUrlParser: true,
-//             useUnifiedTopology: true,
-//             useCreateIndex: true,
-//             useFindAndModify: false
-//         })
+        await mongoose.connect(process.env.DB_URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useCreateIndex: true,
+            useFindAndModify: false
+        })
 
-//         app.listen(PORT, () => console.log('Server has been started on PORT ', PORT))
+        app.listen(PORT, () => console.log('Server has been started on PORT ', PORT))
 
-//     } catch (err) {
-//         console.error(err)
-//     }
-// }
+    } catch (err) {
+        console.error(err)
+    }
+}
 
 
-// start()
+start()
 
