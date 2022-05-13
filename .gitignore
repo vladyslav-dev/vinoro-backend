@@ -17,7 +17,6 @@ lerna-debug.log*
 .env
 .env.test
 
-.DS_Store
 
 # yarn v2
 .yarn/cache
@@ -26,4 +25,5 @@ lerna-debug.log*
 .yarn/install-state.gz
 .pnp.*
 .vercel
+
 .DS_Store
