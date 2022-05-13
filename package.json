@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "npm install pm2 -g && pm2 start npm --name vinoro-server -- start"
+    "start": "npm install pm2 -g && pm2 start index.js"
   },
   "keywords": [],
   "author": "",
