@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "pm2 start yarn --name vinoro-server -- start"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
