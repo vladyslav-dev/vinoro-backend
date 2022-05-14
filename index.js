@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser')
 const errorMiddleware = require('./middlewares/errorMiddleware')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+// require('dotenv').config()
 
 const authRouter = require('./routes/auth')
 const catalogRouter = require('./routes/catalog')
@@ -21,8 +22,6 @@ app.use(bodyParser.urlencoded({limit: '100mb', extended: true}))
 
 app.use(express.json())
 app.use(cookieParser())
-
-app.listen(PORT, () => console.log('Server has been started on PORT ', PORT))
 
 app.get('/', (req, res) => {
     res.send('API is working fine')
