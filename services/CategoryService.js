@@ -2,7 +2,6 @@ const utils = require('../utils');
 const CategoryDto = require('../dtos/categoryDtos');
 const CategoryModel = require('../models/CategoryModel');
 const SearchCategoryDto = require('../dtos/searchCategoryDtos');
-const ProductDto = require('../dtos/productDtos');
 
 class CategoryService {
     async create(data) {

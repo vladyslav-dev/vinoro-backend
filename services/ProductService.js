@@ -1,8 +1,9 @@
 const ProductModel = require('../models/ProductModel');
 const cloudinary = require('../utils/cloudinary')
 const ProductDto = require('../dtos/productDtos');
-const SearchProductsDto = require('../dtos/SearchProductDtos')
+// const SearchProductsDto = require('../dtos/SearchProductDtos')
 const utils = require('../utils');
+const SearchProductDtos = require('../dtos/searchProductDtos');
 
 class ProductService {
     async create(data) {
@@ -116,7 +117,7 @@ class ProductService {
     async getSearchProducts() {
         const searchProducts = await ProductModel.find({}, ['_id', 'name', 'category']);
 
-        const searchProductsDto = searchProducts.map(item => new SearchProductsDto(item))
+        const searchProductsDto = searchProducts.map(item => new SearchProductDtos(item))
 
         return searchProductsDto
     }
