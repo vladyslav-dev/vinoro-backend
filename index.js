@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 app.use(cors({
     credentials: true,
-    origin: [process.env.MAIN_CLIENT_URL, process.env.ADMIN_PANEL_CLIENT_URL]
+    origin: [process.env.ADMIN_PANEL_CLIENT_URL, process.env.MAIN_CLIENT_URL]
 }));
 
 app.use('/api', dashboardRouter)
