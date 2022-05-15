@@ -16,6 +16,9 @@ class UserController {
         httpOnly: true,
         // secure: true,
         // domain: process.env.ADMIN_PANEL_CLIENT_URL
+        httpOnly: true,
+        sameSite: "None",
+        secure: true,
       });
       return res.json(userData); // {user, accessToken, refreshToken}
     } catch (err) {
@@ -32,6 +35,9 @@ class UserController {
         httpOnly: true,
         // secure: true,
         // domain: process.env.ADMIN_PANEL_CLIENT_URL
+        httpOnly: true,
+        sameSite: "None",
+        secure: true,
       });
       return res.json(userData); // {user, accessToken, refreshToken}
     } catch (err) {
@@ -59,6 +65,9 @@ class UserController {
         httpOnly: true,
         // secure: true,
         // domain: process.env.ADMIN_PANEL_CLIENT_URL
+        httpOnly: true,
+        sameSite: "None",
+        secure: true,
       });
       return res.json(userData); // {user, accessToken, refreshToken}
     } catch (err) {
