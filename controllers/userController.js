@@ -14,8 +14,6 @@ class UserController {
       res.cookie("refreshToken", userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
-        // secure: true,
-        // domain: process.env.ADMIN_PANEL_CLIENT_URL
         httpOnly: true,
         sameSite: "None",
         secure: true,
@@ -33,8 +31,6 @@ class UserController {
       res.cookie("refreshToken", userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
-        // secure: true,
-        // domain: process.env.ADMIN_PANEL_CLIENT_URL
         httpOnly: true,
         sameSite: "None",
         secure: true,
@@ -63,8 +59,6 @@ class UserController {
       res.cookie("refreshToken", userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
-        // secure: true,
-        // domain: process.env.ADMIN_PANEL_CLIENT_URL
         httpOnly: true,
         sameSite: "None",
         secure: true,

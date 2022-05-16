@@ -132,7 +132,7 @@ class ProductService {
 
     async getProductsByCategoryId(id) {
 
-        const products = await ProductModel.find({ category: id }).sort('order_id');
+        const products = await ProductModel.find({ category: id }).sort([['availability', -1], ['order_id', 0]]);
 
         const productsDto = products.map(product => new ProductDto(product));
 
