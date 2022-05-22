@@ -14,7 +14,6 @@ class UserController {
       res.cookie("refreshToken", userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
-        httpOnly: true,
         sameSite: "None",
         secure: true,
       });
@@ -30,7 +29,6 @@ class UserController {
       const userData = await UserService.login(login, password);
       res.cookie("refreshToken", userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        httpOnly: true,
         httpOnly: true,
         sameSite: "None",
         secure: true,
@@ -58,7 +56,6 @@ class UserController {
       const userData = await UserService.refresh(refreshToken);
       res.cookie("refreshToken", userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        httpOnly: true,
         httpOnly: true,
         sameSite: "None",
         secure: true,

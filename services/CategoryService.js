@@ -32,7 +32,7 @@ class CategoryService {
         return categoryDto;
     }
     async getAll() {
-        const categoryList = await CategoryModel.find();
+        const categoryList = await CategoryModel.find().sort([['order_id', 0]]);
 
         const res = categoryList.map(item => new CategoryDto(item));
 
