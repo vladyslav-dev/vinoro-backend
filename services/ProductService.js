@@ -1,7 +1,7 @@
 const ProductModel = require('../models/ProductModel');
 const cloudinary = require('../utils/cloudinary')
 const ProductDto = require('../dtos/productDtos');
-const SearchProductsDto = require('../dtos/SearchProductDtos')
+const SearchProductsDto = require('../dtos/searchProductDtos')
 const utils = require('../utils');
 
 class ProductService {
