@@ -1,4 +1,4 @@
-module.exports = class SearchProductsDto {
+module.exports = class SearchProductDtos {
     id
     name
     category

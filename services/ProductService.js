@@ -1,8 +1,8 @@
 const ProductModel = require('../models/ProductModel');
 const cloudinary = require('../utils/cloudinary')
 const ProductDto = require('../dtos/productDtos');
-const SearchProductsDto = require('../dtos/searchProductDtos')
 const utils = require('../utils');
+const SearchProductDtos = require('../dtos/searchProductDtos');
 
 class ProductService {
     async create(data) {
@@ -114,15 +114,15 @@ class ProductService {
     }
 
     async getSearchProducts() {
-        const searchProducts = await ProductModel.find({}, ['_id', 'name', 'category']);
+        const searchProducts = await ProductModel.find({}, ['_id', 'name', 'category']).sort([['availability', -1], ['order_id', 0]]);
 
-        const searchProductsDto = searchProducts.map(item => new SearchProductsDto(item))
+        const searchProductsDto = searchProducts.map(item => new SearchProductDtos(item))
 
         return searchProductsDto
     }
 
     async getSearchProductsByIds(data) {
-        const searchProducts = await ProductModel.find({ _id: { $in: data } });
+        const searchProducts = await ProductModel.find({ _id: { $in: data } }).sort([['availability', -1], ['order_id', 0]]);
 
         const searchProductsDto = searchProducts.map(item => new ProductDto(item))
 
@@ -131,7 +131,7 @@ class ProductService {
 
     async getProductsByCategoryId(id) {
 
-        const products = await ProductModel.find({ category: id }).sort('order_id');
+        const products = await ProductModel.find({ category: id }).sort([['availability', -1], ['order_id', 0]]);
 
         const productsDto = products.map(product => new ProductDto(product));
 

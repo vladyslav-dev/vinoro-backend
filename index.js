@@ -25,16 +25,24 @@ app.use(bodyParser.urlencoded({limit: '100mb', extended: true}))
 app.use(express.json())
 app.use(cookieParser())
 
-app.get('/', (req, res) => {
-    res.send('API is working fine')
-});
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,UPDATE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+    next();
+  });
+
+app.use(errorMiddleware)
 
 app.use(cors({
     credentials: true,
-    origin: [process.env.MAIN_CLIENT_URL, process.env.ADMIN_PANEL_CLIENT_URL]
+    origin: [process.env.ADMIN_PANEL_CLIENT_URL, process.env.MAIN_CLIENT_URL]
 }));
 
-app.use("/api/test", test);
+app.get('/', (req, res) => {
+    res.send('API is working fine')
+});
 
 app.use('/api', dashboardRouter)
 app.use('/api', questionRouter)
@@ -44,7 +52,7 @@ app.use('/api', productRouter)
 app.use('/api', orderRouter)
 app.use('/api', authRouter)
 
-app.use(errorMiddleware)
+
 
 const start = async () => {
     try {

@@ -1,12 +1,15 @@
 const CatalogModel = require('../models/CatalogModel');
 const CategoryModel = require('../models/CategoryModel');
 const ProductModel = require('../models/ProductModel');
+const OrderModel = require('../models/OrderModel');
 
 class DashboardService {
 
     async getInfo() {
         try {
             const catalog = await CatalogModel.find();
+
+            const orders = await OrderModel.find({ confirmed: false, success: false });
 
             const catalogInfo = await Promise.all(catalog.map(async (item) => {
                 const categor = await CategoryModel.find({ catalog: item.id })
@@ -33,7 +36,7 @@ class DashboardService {
 
             return {
                 catalogInfo: catalogInfo,
-                totalOrders: 0,             // add it later !!!!!!!!
+                totalOrders: orders.length,            // add it later !!!!!!!!
                 totalProducts: totalProducts,
                 totalNewProducts: newProduct.length,
                 totalDiscountPriceProducts: discountPrice.length,

@@ -2,7 +2,6 @@ const utils = require('../utils');
 const CategoryDto = require('../dtos/categoryDtos');
 const CategoryModel = require('../models/CategoryModel');
 const SearchCategoryDto = require('../dtos/searchCategoryDtos');
-const ProductDto = require('../dtos/productDtos');
 
 class CategoryService {
     async create(data) {
@@ -33,7 +32,7 @@ class CategoryService {
         return categoryDto;
     }
     async getAll() {
-        const categoryList = await CategoryModel.find();
+        const categoryList = await CategoryModel.find().sort([['order_id', 0]]);
 
         const res = categoryList.map(item => new CategoryDto(item));
 
