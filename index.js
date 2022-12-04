@@ -14,6 +14,8 @@ const dashboardRouter = require('./routes/dashboard')
 const orderRouter = require('./routes/order')
 const questionRouter = require('./routes/question')
 
+const test = require("./api/test");
+
 const app = express()
 const PORT = process.env.PORT || 3000
 
