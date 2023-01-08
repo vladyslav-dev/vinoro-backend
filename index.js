@@ -56,7 +56,10 @@ app.use('/api', authRouter)
 
 const start = async () => {
     try {
-
+        if (process.env.DB_URL === undefined) {
+            console.error('DB_URL is not defined')
+            return
+        }
         await mongoose.connect(process.env.DB_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,

@@ -19,27 +19,30 @@ class OrderService {
 
         const totalPrice = productArray.reduce((acc, product) => acc + product.total_price, 0);
 
-        OrderModel.create({
-            order_id: data.order_id,
-            name: data.name,
-            surname: data.surname,
-            email: data.email,
-            phone: data.phone,
-            city: data.city,
-            local_address: data.local_address,
-            post_adress: data.post_adress,
-            post_number: data.post_number,
-            payment: data.payment,
-            created_at: data.created_at,
-            products: productArray,
-            order_price: totalPrice,
-            lang: data.mailLanguage,
-            confirmed: false,
-            success: false
-        }, function (err) {
-            if (err) return console.error(err);
-            sendMail(data, totalPrice);
-        });
+        return new Promise((resolve, reject) => {
+            OrderModel.create({
+                order_id: data.order_id,
+                name: data.name,
+                surname: data.surname,
+                email: data.email,
+                phone: data.phone,
+                city: data.city,
+                local_address: data.local_address,
+                post_adress: data.post_adress,
+                post_number: data.post_number,
+                payment: data.payment,
+                created_at: data.created_at,
+                products: productArray,
+                order_price: totalPrice,
+                lang: data.mailLanguage,
+                confirmed: false,
+                success: false
+            }, async function (err) {
+                if (err) return reject(err);
+                const response = await sendMail(data, totalPrice)
+                resolve(response)
+            })
+        })
     }
     async getAll() {
         const orders = await OrderModel.find({}).sort({ order_id: -1 });

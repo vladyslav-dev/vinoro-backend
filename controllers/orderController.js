@@ -5,8 +5,8 @@ module.exports.create = async (req, res, next) => {
         const data = req?.body?.data;
 
         if (data) {
-            await OrderService.create(data);
-            res.send("Success")
+            const response = await OrderService.create(data);
+            res.json(response);
         }
     } catch (error) {
         next(error)
