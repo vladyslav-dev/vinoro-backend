@@ -12,7 +12,7 @@ module.exports = (data, totalPrice) => {
         name: "smtp.gmail.com",
         host: "smtp.gmail.com",
         secure: true,
-        port: 465,
+        port: 587,
         auth: {
             user: 'vinorosend@gmail.com',
             pass: 'mtvyrpibtzlkpoec'
