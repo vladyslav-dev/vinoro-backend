@@ -9,10 +9,13 @@ module.exports = (data, totalPrice) => {
    const html = createMailHTML(data, totalPrice, mailLanguage)
 
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        name: "smtp.gmail.com",
+        host: "smtp.gmail.com",
+        secure: true,
+        port: 465,
         auth: {
-        user: 'vinorosend@gmail.com',
-        pass: 'mtvyrpibtzlkpoec'
+            user: 'vinorosend@gmail.com',
+            pass: 'mtvyrpibtzlkpoec'
         }
     });
 
