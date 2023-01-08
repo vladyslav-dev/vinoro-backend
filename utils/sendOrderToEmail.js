@@ -11,11 +11,14 @@ module.exports = (data, totalPrice) => {
     const transporter = nodemailer.createTransport({
         name: "smtp.gmail.com",
         host: "smtp.gmail.com",
-        secure: true,
+        secure: false,
         port: 587,
         auth: {
             user: 'vinorosend@gmail.com',
             pass: 'mtvyrpibtzlkpoec'
+        },
+        tls: {
+            ciphers:'SSLv3'
         }
     });
 
