@@ -32,7 +32,27 @@ class CategoryService {
         return categoryDto;
     }
     async getAll() {
-        const categoryList = await CategoryModel.find().sort([['order_id', 0]]);
+        
+    const categoryList = await CategoryModel.aggregate([
+        {
+        $lookup: {
+            from: 'products',
+            localField: '_id',
+            foreignField: 'category',
+            as: 'products',
+        },
+        },
+        {
+        $match: {
+            'products.0': { $exists: true },
+        },
+        },
+        {
+        $sort: {
+            order_id: 1,
+        },
+        },
+    ]);
 
         const res = categoryList.map(item => new CategoryDto(item));
 

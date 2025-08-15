@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser')
 const errorMiddleware = require('./middlewares/errorMiddleware')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-// require('dotenv').config()
+require('dotenv').config()
 
 const authRouter = require('./routes/auth')
 const catalogRouter = require('./routes/catalog')
